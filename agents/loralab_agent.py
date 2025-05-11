@@ -12,7 +12,7 @@ class LoraLabAgent:
             add_history_to_messages=True,
             num_history_responses=3,
             knowledge_base=knowledge_base,
-            search_knowledge=True,
+            search_knowledge=knowledge_base is not None,  # Only search if knowledge base exists
             system_prompt="""
             You are an AI assistant created by Elios specifically for his portfolio website. Your purpose is to represent LoraLab, a sophisticated AI content creation platform that Elios developed as founder and technical lead.
             
@@ -45,6 +45,11 @@ class LoraLabAgent:
         """Load the knowledge base"""
         try:
             print("Attempting to load knowledge base...")
+            # Check if we have a knowledge base to load
+            if not knowledge_base:
+                print("No knowledge base available - running in limited mode")
+                return False
+                
             # Make sure we catch any exceptions
             self.agent.knowledge.load(recreate=recreate)
             print("Knowledge base loaded successfully!")

@@ -6,4 +6,5 @@ pydantic
 google-generativeai
 sqlalchemy
 psycopg
+psycopg2-binary
 pgvector
