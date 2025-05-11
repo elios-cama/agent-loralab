@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+phidata
+python-dotenv
+pydantic
+google-generativeai
+sqlalchemy
+psycopg
+pgvector
+sentence-transformers

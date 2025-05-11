@@ -1,0 +1,31 @@
+# Architecture Highlights
+
+## Services Layer
+The application uses a service-oriented architecture with specialized service components:
+- `LoraService`: Handles all LoRA model training and image generation
+- `VoiceService`: Manages voice cloning and audio generation
+- `GenerationService`: Provides enhanced prompt generation with AI
+- `VideoPromptEnhancer`: Specializes in creating detailed prompts for video motion
+- `APIUserService`: Handles user management and authentication
+- `FilterService`: Applies artistic filters to generations
+
+## Router Structure
+The API is organized with distinct routers for different authentication mechanisms:
+- `api_router.py`: For API key-based authentication (developer access)
+- `web_router.py`: For JWT/session-based authentication (web users)
+- `replicate_router.py`: For handling webhooks from Replicate
+
+## Asynchronous Processing
+- Background task management for resource-intensive operations
+- Webhook handling for model training completion
+- Polling mechanisms for status updates
+- Queue-based processing for long-running operations
+
+## Development Approach
+This project was built with:
+- Clean code practices with consistent formatting and naming conventions
+- Extensive documentation using docstrings and OpenAPI
+- Modular design for easy maintenance and extension
+- Separation of concerns between data models, business logic, and API endpoints
+- Comprehensive error handling and validation
+- Security-first approach with proper authentication and input validation 

@@ -1,0 +1,41 @@
+# Technical Stack
+
+## Frontend
+- Next.js 14 with React, utilizing the App Router architecture
+- Tailwind CSS with custom animations, responsive design, and CSS variables for theme consistency
+- Zustand for state management (specifically for model and video generation states)
+- Framer Motion for fluid UI transitions and microinteractions
+- Headless UI components for accessible dropdown menus and transitions
+- Custom hook system for reusable logic (like ad tracking and authentication)
+- Optimized media loading with lazy loading strategies and format detection
+- Mobile-specific performance optimizations and viewport adaptations
+- Interactive UI elements with status indicators and real-time feedback
+
+## Backend
+- FastAPI (Python 3.9+)
+- Supabase for database, storage, and authentication
+- AWS Lambda for serverless deployment
+- Docker for containerization
+- Pydantic for data validation and schema enforcement
+- Mangum for AWS Lambda integration
+- Asynchronous processing with aiohttp and background tasks
+- Credit-based system for metering and usage tracking
+- Replicate API integration for model training and inference
+- ElevenLabs API for voice synthesis
+- Google Gemini for prompt enhancement and generation
+
+## AI Integration
+- Replicate API for model training/inference
+- ElevenLabs for voice generation
+- Custom implementation for video generation
+
+## Payment Processing
+- Stripe for subscription management and credit purchases
+- Blockchain wallet connections for MultiversX and Solana crypto payments
+
+## Deployment Environment
+The application is containerized with Docker and deployed as a serverless function on AWS Lambda, providing:
+- Scalable infrastructure that adjusts to demand
+- Cost-efficient resource utilization
+- High availability and reliability
+- Simplified deployment process with CI/CD integration 
