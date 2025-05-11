@@ -20,6 +20,10 @@ COPY . .
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
+ENV PORT=8000
 
-# Use shell form to ensure PORT is properly substituted or defaults to 8000
-ENTRYPOINT ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"] 
+# Expose port
+EXPOSE 8000
+
+# Default command - can be overridden by railway.json startCommand
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"] 
