@@ -21,5 +21,5 @@ COPY . .
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Command to run the application - use a shell to ensure $PORT is expanded
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000} 
+# Use shell form to ensure PORT is properly substituted or defaults to 8000
+ENTRYPOINT ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"] 
