@@ -7,4 +7,3 @@ google-generativeai
 sqlalchemy
 psycopg
 pgvector
-sentence-transformers
