@@ -2,6 +2,7 @@ from phi.knowledge.text import TextKnowledgeBase
 from phi.vectordb.pgvector import PgVector
 from phi.embedder.google import GeminiEmbedder
 import os
+import sys
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -20,14 +21,19 @@ if os.getenv("DATABASE_URL"):
     # Use the Railway-provided DATABASE_URL
     db_url = os.getenv("DATABASE_URL")
 
-# Create a knowledge base for the LoraLab information
-knowledge_base = TextKnowledgeBase(
-    path="data/txt_files",
-    formats=[".txt"],
-    vector_db=PgVector(
-        table_name="loralab_documents",
-        db_url=db_url,
-        embedder=embedder,  # Use Gemini embedder
-    ),
-    num_documents=5,  # Number of relevant documents to return for each query
-) 
+try:
+    # Create a knowledge base for the LoraLab information
+    knowledge_base = TextKnowledgeBase(
+        path="data/txt_files",
+        formats=[".txt"],
+        vector_db=PgVector(
+            table_name="loralab_documents",
+            db_url=db_url,
+            embedder=embedder,  # Use Gemini embedder
+        ),
+        num_documents=5,  # Number of relevant documents to return for each query
+    )
+except Exception as e:
+    print(f"ERROR initializing knowledge base: {str(e)}", file=sys.stderr)
+    # Create a dummy knowledge base without a vector DB for testing
+    knowledge_base = None 
