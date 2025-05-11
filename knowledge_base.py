@@ -10,8 +10,15 @@ load_dotenv()
 # Create Gemini embedder
 embedder = GeminiEmbedder()
 
-# Database connection string
-db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
+# Get database connection string from environment variable or use default
+# This allows for different configurations in local and Railway environments
+db_url = os.getenv("PG_DB_URL", "postgresql+psycopg://ai:ai@localhost:5532/ai")
+
+# For Railway with PostgreSQL addon:
+# Railway automatically sets DATABASE_URL when using their PostgreSQL addon
+if os.getenv("DATABASE_URL"):
+    # Use the Railway-provided DATABASE_URL
+    db_url = os.getenv("DATABASE_URL")
 
 # Create a knowledge base for the LoraLab information
 knowledge_base = TextKnowledgeBase(
